@@ -1,5 +1,8 @@
 import { db } from "~/server/db";
 
+// since there is caching, the next line make sure every time we change in the DB, the content is updated
+export const dynamic = "force-dynamic"
+
 const mockUrls = [
  'https://atybhqqgzk.ufs.sh/f/t2uY3skTYXDOoMh1k8OjynkiSNzmlPfHeCEthRUAVux3g0c4',
  'https://atybhqqgzk.ufs.sh/f/t2uY3skTYXDOEipupbcT49Pqwm6rlSG3HvnzI2pMRNkoaJFj'
@@ -21,7 +24,7 @@ export default async function HomePage() {
     <main className="">
         <div className="flex flex-wrap gap-1">
           {posts.map((post, index) => (
-            <div key={post.id + index} >{post.id}</div>
+            <div key={post.id + index} >{post.name}</div>
           ))}
           {mockImages.map((image, index) => (
           <div key={image.id + index} className="w-48 ">
