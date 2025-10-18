@@ -47,3 +47,6 @@ yarn-error.log*
 
 # vscode IDE
 .vscode
+
+# clerk configuration (can include secrets)
+/.clerk/
