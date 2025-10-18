@@ -3,34 +3,25 @@ import { db } from "~/server/db";
 // since there is caching, the next line make sure every time we change in the DB, the content is updated
 export const dynamic = "force-dynamic"
 
-const mockUrls = [
- 'https://atybhqqgzk.ufs.sh/f/t2uY3skTYXDOoMh1k8OjynkiSNzmlPfHeCEthRUAVux3g0c4',
- 'https://atybhqqgzk.ufs.sh/f/t2uY3skTYXDOEipupbcT49Pqwm6rlSG3HvnzI2pMRNkoaJFj'
-];
-
-const mockImages = mockUrls.map((url, index) => {
-  return {
-    url,
-    id: index + 1,
-  };
-});
 
 export default async function HomePage() {
-  
-  const posts = await db.query.posts.findMany();
-  console.log('🚀 ~ HomePage ~ posts:', posts);
+
+  const images = await db.query.images.findMany({
+    orderBy: (images, { desc }) => [desc(images.createdAt)],
+  });
 
   return (
     <main className="">
         <div className="flex flex-wrap gap-1">
-          {posts.map((post, index) => (
-            <div key={post.id + index} >{post.name}</div>
+          {[...images, ...images, ...images].map((image, index) => (
+            <div className="flex flex-col gap-0.5" key={image.id + index}>
+              <img src={image.url}  className="w-48 h-48 object-cover" />
+              <div className="text-sm text-white">
+                {image.name}
+              </div>
+            </div>
           ))}
-          {mockImages.map((image, index) => (
-          <div key={image.id + index} className="w-48 ">
-            <img src={image.url} />
-          </div>
-        ))}</div>
+        </div>
     </main>
   );
 }
