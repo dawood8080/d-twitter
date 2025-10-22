@@ -9,7 +9,7 @@ export default function TopNav() {
           <SignInButton>Sign in</SignInButton>
         </SignedOut>
         <SignedIn>
-          <UserButton>Profile</UserButton>
+          <UserButton />
         </SignedIn>
       </div>
     </nav>
