@@ -1,13 +1,11 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/db/queries";
 
 // since there is caching, the next line make sure every time we change in the DB, the content is updated
 export const dynamic = "force-dynamic"
 
 async function Images () {
-  const images = await db.query.images.findMany({
-    orderBy: (images, { desc }) => [desc(images.createdAt)],
-  });
+  const images = await getMyImages();
 
   return (
     <div className="flex flex-wrap gap-1">
