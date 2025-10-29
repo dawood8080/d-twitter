@@ -23,6 +23,7 @@ export const images = createTable(
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
+    userId: d.varchar({ length: 256 }).notNull(),
   }),
   (t) => [index("name_idx").on(t.name)],
 );
