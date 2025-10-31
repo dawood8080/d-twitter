@@ -1,4 +1,5 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Image from "next/image";
 import { getMyImages } from "~/server/db/queries";
 
 // since there is caching, the next line make sure every time we change in the DB, the content is updated
@@ -8,10 +9,10 @@ async function Images () {
   const images = await getMyImages();
 
   return (
-    <div className="flex flex-wrap gap-1">
+    <div className="flex flex-wrap gap-1 justify-center">
       {images.map((image) => (
-        <div className="flex flex-col gap-0.5" key={image.id}>
-          <img src={image.url}  className="w-48 h-48 object-cover" />
+        <div className="flex flex-col gap-0.5 w-48 h-48" key={image.id}>
+          <Image src={image.url} style={{ objectFit: "contain" }} width={192} height={192} alt={image.name} />
           <div className="text-sm text-white">
             {image.name}
           </div>
