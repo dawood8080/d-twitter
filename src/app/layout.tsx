@@ -37,9 +37,11 @@ export default function RootLayout({
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
       <html lang="en" className={`${geist.variable}`}>
-        <body className={`font-sans ${geist.variable} flex flex-col gap-4`}>
-          <TopNav />
-          {children}
+        <body className={`font-sans ${geist.variable}`}>
+          <div className="grid grid-rows-[auto_1fr] h-screen">
+            <TopNav />
+            <main className="overflow-y-scroll">{children}</main>
+          </div>
           {modal}
           <div id="modal-root" />
         </body>
