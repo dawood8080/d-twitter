@@ -33,7 +33,7 @@ const useUploadThingInputProps = (...args: Input) => {
 const UploadSVG = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    fill="none"
+    fill="currentColor"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
@@ -47,11 +47,15 @@ const UploadSVG = () => (
   </svg>
 );
 
+const LoadingSpinner = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect className="spinner_jCIR" x="1" y="6" width="2.8" height="12"/><rect className="spinner_jCIR spinner_upm8" x="5.8" y="6" width="2.8" height="12"/><rect className="spinner_jCIR spinner_2eL5" x="10.6" y="6" width="2.8" height="12"/><rect className="spinner_jCIR spinner_Rp9l" x="15.4" y="6" width="2.8" height="12"/><rect className="spinner_jCIR spinner_dy3W" x="20.2" y="6" width="2.8" height="12"/></svg>
+);
+
 export function SimpleUploadButton() {
   const router = useRouter();
-  const { inputProps, isUploading } = useUploadThingInputProps("imageUploader", {
+  const { inputProps } = useUploadThingInputProps("imageUploader", {
     onUploadBegin: () => {
-      toast("Uploading image...");
+      toast(<div className="flex items-center gap-2"><LoadingSpinner /> Uploading image...</div>);
     },
     onClientUploadComplete: () => {
       toast.dismiss();
