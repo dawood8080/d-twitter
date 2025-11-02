@@ -57,7 +57,7 @@ dialog {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: lch(100% 0.01 296.81);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -96,7 +96,7 @@ dialog {
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
+  --popover-foreground: oklch(30.919% 0.00004 271.152);
   --primary: oklch(0.929 0.013 255.508);
   --primary-foreground: oklch(0.208 0.042 265.755);
   --secondary: oklch(0.279 0.041 260.031);
