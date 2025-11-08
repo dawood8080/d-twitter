@@ -30,25 +30,25 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <PostHogProvider>
-        <NextSSRPlugin
-            /**
-             * The `extractRouterConfig` will extract **only** the route configs
-             * from the router to prevent additional information from being
-             * leaked to the client. The data passed to the client is the same
-             * as if you were to fetch `/api/uploadthing` directly.
-             */
-            routerConfig={extractRouterConfig(ourFileRouter)}
-          />
         <html lang="en" className={`${geist.variable}`}>
-          <body className={`font-sans ${geist.variable}`}>
-            <div className="grid grid-rows-[auto_1fr] h-screen">
-              <TopNav />
-              <main className="overflow-y-scroll">{children}</main>
-            </div>
-            {modal}
-            <div id="modal-root" />
-            <Toaster />
-          </body>
+          <NextSSRPlugin
+              /**
+               * The `extractRouterConfig` will extract **only** the route configs
+               * from the router to prevent additional information from being
+               * leaked to the client. The data passed to the client is the same
+               * as if you were to fetch `/api/uploadthing` directly.
+               */
+              routerConfig={extractRouterConfig(ourFileRouter)}
+            />
+            <body className={`font-sans ${geist.variable}`}>
+              <div className="grid grid-rows-[auto_1fr] h-screen">
+                <TopNav />
+                <main className="overflow-y-scroll">{children}</main>
+                {modal}
+              </div>
+              <div id="modal-root" />
+              <Toaster />
+            </body>
         </html>
       </PostHogProvider>
     </ClerkProvider>

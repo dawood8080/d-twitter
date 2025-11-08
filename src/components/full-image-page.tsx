@@ -1,11 +1,12 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { getImage } from "~/server/db/queries";
+import DeleteImageButton from "./delete-image-button";
 
 export default async function FullPageImageView({ id }: { id: number }) {
   const image = await getImage(id);
   const user = await currentUser();
 
-  return (
+  return image && (
     <div className="h-full w-full flex min-w-0 min-h-0">
       <div className="flex flex-shrink items-center justify-center w-[70%]">
         <img
@@ -23,6 +24,9 @@ export default async function FullPageImageView({ id }: { id: number }) {
         <div className="flex flex-col p-2">
           <span>Created at:</span>
           <span>{new Date(image.createdAt).toLocaleString()}</span>
+        </div>
+        <div className="flex flex-col p-2">
+          <DeleteImageButton id={id} />
         </div>
       </div>
     </div>
