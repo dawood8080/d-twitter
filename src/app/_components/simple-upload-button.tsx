@@ -59,6 +59,11 @@ export function SimpleUploadButton() {
     onUploadBegin: () => {
       toast(<div className="flex items-center gap-2"><LoadingSpinner /> Uploading image...</div>);
     },
+    onUploadError: (error: Error) => {
+      posthog.capture("upload_error", { error: error.message });
+      toast.dismiss();
+      toast.error(error.message);
+    },
     onClientUploadComplete: () => {
       posthog.capture("image_uploaded");
       toast.dismiss();
