@@ -17,4 +17,10 @@
 - [x] ShadUIfy (specifically toasts)
 - [x] Analytics (posthog)
 - [x] Delete button (w/ Server Actions)
-- [ ] Ratelimiting (upstash)
+- [x] Ratelimiting (upstash)
+
+## Some challenges
+
+- [ ] "Selecting" images on the gallery page (we can use zustand)
+- [ ] "Infinite scrolling"
+- [ ] Folders/Albums

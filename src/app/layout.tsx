@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <PostHogProvider>
-        <html lang="en" className={`${geist.variable}`}>
+        <html lang="en" className={`${geist.variable}`} suppressHydrationWarning>
           <NextSSRPlugin
               /**
                * The `extractRouterConfig` will extract **only** the route configs
@@ -40,7 +40,7 @@ export default function RootLayout({
                */
               routerConfig={extractRouterConfig(ourFileRouter)}
             />
-            <body className={`font-sans ${geist.variable}`}>
+            <body className={`font-sans ${geist.variable}`} suppressHydrationWarning>
               <div className="grid grid-rows-[auto_1fr] h-screen">
                 <TopNav />
                 <main className="overflow-y-scroll">{children}</main>
