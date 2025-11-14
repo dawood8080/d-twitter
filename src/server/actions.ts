@@ -7,4 +7,3 @@ export async function deleteImageAction(id: number) {
   await deleteImage(id);
   revalidatePath("/");
 }
-
